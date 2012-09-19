@@ -1,7 +1,6 @@
 #from twilio.rest import TwilioRestClient
 from flask import Flask, request, redirect
-
-import config
+import os
 
 app = Flask(__name__)
 
