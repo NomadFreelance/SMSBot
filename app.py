@@ -14,6 +14,6 @@ def hello_monkey():
     return str(resp)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=os.environ["PORT"])
+    app.run(debug=True, port=int(os.environ["PORT"]))
 
 #client = TwilioRestClient(config.SID, config.TOKEN)
