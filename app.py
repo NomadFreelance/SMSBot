@@ -2,7 +2,7 @@
 from flask import Flask, request, redirect
 import twilio.twiml
 
-#import os
+import os
 
 app = Flask(__name__)
 
@@ -14,6 +14,6 @@ def hello_monkey():
     return str(resp)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=os.environ["PORT"])
 
 #client = TwilioRestClient(config.SID, config.TOKEN)
