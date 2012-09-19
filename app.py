@@ -1,8 +1,11 @@
 #from twilio.rest import TwilioRestClient
 from flask import Flask, request, redirect
-import os
+import twilio.twiml
+
+#import os
 
 app = Flask(__name__)
+
 
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
@@ -10,7 +13,7 @@ def hello_monkey():
     resp.sms("hello there")
     return str(resp)
 
-if __name == "__main__":
+if __name__ == "__main__":
     app.run(debug=True)
 
 #client = TwilioRestClient(config.SID, config.TOKEN)
