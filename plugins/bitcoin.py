@@ -1,17 +1,25 @@
-from util import http, hook
+from util.plugin import Plugin
+from util import http
 
 
-@hook.command
-def bitcoin(inp, say=None, nick='', chan='', conn=None):
-    try:
-        data = http.get_json("https://mtgox.com/api/0/data/ticker.php")
-    except:
-        say('mtgox is down or something')
+class Bitcoin(Plugin):
+    def __init__(self):
+        super(Bitcoin, self).__init__()
 
-    ticker = data['ticker']
-    high = float(ticker['high'])
-    low = float(ticker['low'])
-    volume = float(ticker['vol'])
-    current = float(ticker['buy'])
-    
-    say("Current Price: \x0307$%.2f\x0f - High: \x0307$%.2f\x0f - Low: \x0307$%.2f\x0f - Bitcoins Sold Today: %s" % (current, high, low, volume))
+        self.add_command("bitcoin", self.com_bitcoin, has_arg=False)
+
+    def com_bitcoin(self):
+        try:
+            data = http.get_json("https://mtgox.com/api/0/data/ticker.php")
+        except:
+            return 'Error retrieving prices.'
+
+        ticker = data['ticker']
+        high = float(ticker['high'])
+        low = float(ticker['low'])
+        volume = float(ticker['vol'])
+        current = float(ticker['buy'])
+        
+        return ("Current Price: $%.2f - High: $%.2f - Low: $%.2f - Bitcoins Sold Today: %s" % (current, high, low, volume))
+
+ExportPlugin = Bitcoin
