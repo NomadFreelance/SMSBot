@@ -1,3 +1,10 @@
+###
+
+# This file is based off of a plugin by Ell. It's located here:
+# https://github.com/Ell/siri/blob/master/plugins/bitcoin.py
+
+###
+
 from util.plugin import Plugin
 from util import http
 

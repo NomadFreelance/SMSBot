@@ -1,3 +1,14 @@
+###
+
+# This file comes from Skybot, an IRC bot that I've ported some plugins from.
+# Since many of the plugins ported rely on this module, I've included it here rather
+# than rewrite anything.
+
+# Original file here: https://github.com/rmmh/skybot/blob/master/plugins/util/http.py
+
+###
+
+
 # convenience wrapper for urllib2 & friends
 
 import cookielib
@@ -12,7 +23,7 @@ from urllib2 import HTTPError, URLError
 from lxml import etree, html
 
 
-ua_skybot = 'Skybot/1.0 http://github.com/rmmh/skybot'
+ua_smsbot = 'SMSBot/1.0 http://github.com/thomasboyt/SMSBot'
 
 ua_firefox = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) ' \
     'Gecko/20070725 Firefox/2.0.0.6'
@@ -44,7 +55,7 @@ def open(url, query_params=None, user_agent=None, post_data=None,
         query_params = {}
 
     if user_agent is None:
-        user_agent = ua_skybot
+        user_agent = ua_smsbot
 
     query_params.update(kwargs)
 
